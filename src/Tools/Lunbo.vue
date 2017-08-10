@@ -2,7 +2,7 @@
 	<div class="temp">
 	<!-- 图片轮播 -->
 		 <mt-swipe :show-indicators="true">
-      <mt-swipe-item class="slide1" v-for="item in homeData">
+      <mt-swipe-item class="slide1" v-for="(item,index) in lunboData" key="index">
       <a :href="item.url">
       	<img :src="item.img" alt="" class="img">
       </a>
@@ -10,6 +10,9 @@
       </mt-swipe-item>
      
     </mt-swipe>
+
+   </div>
+
     
 </template>
 <style>
@@ -82,3 +85,9 @@
 	height: 100%;
   }
 </style>
+<script type=text/ecmascript-6>
+   export default {
+   //接收父组件传来的值
+    props:['lunboData']
+   }
+</script>

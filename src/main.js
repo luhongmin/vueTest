@@ -22,6 +22,16 @@ import Home from "./components/Home.vue";
 import Member from "./components/Member.vue";
 import Shopping from "./components/Shopping.vue";
 import Search from "./components/Search.vue";
+import NewsList from "./components/NewsList.vue";
+import NewsDetail from './components/NewsDetail.vue';
+import PhotoList from './components/PhotoList.vue';
+
+//引入自定义过滤器
+import Moment from 'moment';
+// Vue.use(Moment);
+Vue.filter('dateFilter',function(input,dateStyle){
+	return Moment(input).format(dateStyle);
+})
 
 //引入vue-resource
 import vueResource from 'vue-resource';
@@ -29,10 +39,15 @@ Vue.use(vueResource);
 var router = new VueRouter({
 	linkActiveClass:'mui-active',
 	routes:[
+		{name:'root',path:'/',redirect:'/home'},
 		{name:"home",path:'/home',component:Home},
 		{name:"member",path:'/member',component:Member},
 		{name:"shopping",path:'/shopping',component:Shopping},
-		{name:"search",path:'/search',component:Search}
+		{name:"search",path:'/search',component:Search},
+		 {name:"newslist",path:'/newsList',component:NewsList},
+		 {name:"newsdetail",path:'/newsDetail/:ids',component:NewsDetail},
+		 {name:"photolist",path:'/photoList',component:PhotoList},
+
 
 	]
 })
